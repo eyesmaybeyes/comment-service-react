@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: black;
+    margin: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,
+.row__text {
+    color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2,
+#chatUserName,
+#chatDate {
+    color: blue;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#chatDate {
+    width: fit-content;
+    margin-right: 10%;
+}
+#chatImage {
+    width: 150px;
+    height: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.info {
+    display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    display: flex;
+}
+
+.info__comment {
+    width: 45%;
+}
+.info__chat {
+    margin-left: 10%;
+    width: 45%;
+}
+
+#fullName,
+#link,
+#comments {
+    border: dashed blue;
+    background-color: black;
+    color: white;
+}
+.row__text {
+    margin: 15px 0;
+}
+
+#chatComment {
+    background-color: black;
+    color: white;
+    border-bottom: dashed blue;
+}
+#fullName,
+#link {
+    height: 30px;
+}
+
+#comments {
+    height: 150px;
+}
+
+.btn {
+    border: none;
+    background-color: blue;
+    color: white;
+    padding: 0.6em 3em;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: medium;
+}
+
+.btn:hover {
+    background-color: rgb(1, 1, 72);
+}
+
+#chatComment {
+    padding: 20px;
+}
+
+.comment__word {
+    font-weight: 700;
+}
+
+.que {
+    color: white;
+    margin: 15px 0 0 15px;
+}
+
+.form-col {
+    display: flex;
+}
+
+.chat__container {
+    display: flex;
+    justify-content: space-between;
 }
