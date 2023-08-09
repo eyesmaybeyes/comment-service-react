@@ -20,7 +20,6 @@ h2,
     margin-right: 10%;
 }
 #chatImage {
-    display: none;
     width: 150px;
     height: auto;
 }
@@ -41,7 +40,7 @@ h2,
 .info__comment {
     width: 45%;
 }
-.info__chat {
+.container {
     margin-left: 10%;
     width: 45%;
 }
