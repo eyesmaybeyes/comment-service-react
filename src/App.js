@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Swal from 'sweetalert2'
 import { Message } from './components/Message/Message.jsx';
 function App() {
   const [comment, setComment] = useState('');
@@ -61,6 +62,10 @@ function App() {
   };
 
   const handleAddComment = () => {
+    if (comment.trim() === '' || username.trim() === '') {
+      Swal.fire('Пожалуйста, заполните все поля');
+      return;
+    }
 
     if (imgLink === '') {
       imgLink = getRandomImage();

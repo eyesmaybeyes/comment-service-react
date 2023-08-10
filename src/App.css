@@ -101,6 +101,9 @@ h2,
     display: flex;
     justify-content: space-between;
 }
+#swal2-title {
+    font-size: 1.4rem;
+}
 @media (max-width: 768px) {
     .info {
         flex-direction: column;
