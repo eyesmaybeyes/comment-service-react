@@ -5,15 +5,71 @@ function App() {
   const [comment, setComment] = useState('');
   const [username, setUsername] = useState('');
   const [commentsList, setCommentsList] = useState([]);
-  const [imgLink, setImgLink] = useState('');
+  let [imgLink, setImgLink] = useState('');
 
-  const [isCheckedYes, setIsCheckedYes] = useState(true);
+  const [isCheckedYes, setIsCheckedYes] = useState(false);
   const [isCheckedNo, setIsCheckedNo] = useState(false);
 
+  let a = new Date();
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  let year = a.getFullYear();
+  let month = months[a.getMonth()];
+  let day = days[a.getDay()];
+  let date = a.getDate();
+  let hour = a.getHours();
+  let min = a.getMinutes();
+  let sec = a.getSeconds();
+  let currentDate =
+    day +
+    ", " +
+    date +
+    " " +
+    month +
+    " " +
+    year +
+    " at " +
+    hour +
+    ":" +
+    min +
+    ":" +
+    sec;
+
+  const getRandomImage = () => {
+    const imgArray = [
+      "https://abrakadabra.fun/uploads/posts/2022-03/1646406414_4-abrakadabra-fun-p-ikonki-dlya-diskorda-anime-9.jpg",
+      "https://img.freepik.com/premium-vector/anime-manga-avatar-schoolgirl_146706-382.jpg?w=2000",
+      "https://img.pikbest.com/png-images/qiantu/cute-bear-girl-anime-avatar-illustration_2529739.png!bwr800",
+      "https://pngicon.ru/file/uploads/anime-girls.png",
+      "https://otkritkis.com/wp-content/uploads/2022/06/rovzi.jpg",
+    ];
+    const randomIndex = Math.floor(Math.random() * imgArray.length);
+    return imgArray[randomIndex];
+  };
+
   const handleAddComment = () => {
+
+    if (imgLink === '') {
+      imgLink = getRandomImage();
+    }
+
     const correctComment = comment.replace(/viagra|xxx/gi, '***');
     setCommentsList(prevComments => [...prevComments, {
       username,
+      currentDate,
       correctComment, imgLink, isCheckedYes
     }]);
     setComment('');
@@ -77,19 +133,18 @@ function App() {
             </div>
           </form>
         </div>
-        <div class="container">
+        <div className="container">
           <h2 className="chat__title">Чат</h2>
-          <div class="chat">
-            {[...commentsList].reverse().map((commentItem, index) =>
-              <Message
-                commentText={commentItem.correctComment}
-                chatUserName={commentItem.username}
-                chatImage={commentItem.imgLink}
-                isCheckedYes={commentItem.isCheckedYes}
-                isFirstMessage={index === 0}
-              />
-            )}
-          </div>
+          {[...commentsList].reverse().map((commentItem, index) =>
+            <Message
+              commentText={commentItem.correctComment}
+              chatUserName={commentItem.username}
+              currentDate={commentItem.currentDate}
+              chatImage={commentItem.imgLink}
+              isCheckedYes={commentItem.isCheckedYes}
+              isFirstMessage={index === 0}
+            />
+          )}
         </div>
       </section>
     </div>

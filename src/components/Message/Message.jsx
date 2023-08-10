@@ -1,18 +1,24 @@
 import React from "react";
 
 const Message = (props) => {
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    var minute = date.getMinutes();
-    var hour = date.getHours();
-
     const messageStyle = {
         color: props.isFirstMessage ? "yellow" : null,
     };
 
-    let currentDate = `${day}-${month}-${year}`;
+    const formatUsername = (username) => {
+        const words = username.split(" ");
+        const formattedWords = words.map((word) => {
+            const regex = /^[a-zA-Zа-яА-Я]+$/;
+            if (regex.test(word)) {
+                const firstLetter = word.charAt(0).toUpperCase();
+                const restOfWord = word.slice(1).toLowerCase();
+                return firstLetter + restOfWord;
+            } else {
+                return "";
+            }
+        });
+        return formattedWords.join(" ");
+    };
 
     return (
         <div className="info__chat chat">
@@ -27,14 +33,10 @@ const Message = (props) => {
                         alt="userImage"
                     />
                 )}
-                <p id="chatDate">
-                    {" "}
-                    {hour}:{minute}
-                </p>
-                <p id="chatDate"> {currentDate}</p>
+                <p id="chatDate"> {props.currentDate}</p>
             </div>
             {props.isCheckedYes == true ? (
-                <p id="chatUserName">{props.chatUserName}</p>
+                <p id="chatUserName">{formatUsername(props.chatUserName)}</p>
             ) : (
                 <p id="chatUserName">Username</p>
             )}
