@@ -33,10 +33,6 @@ h2,
     flex-direction: column;
 }
 
-.info {
-    display: flex;
-}
-
 .info__comment {
     width: 45%;
 }
@@ -104,4 +100,16 @@ h2,
 .chat__container {
     display: flex;
     justify-content: space-between;
+}
+@media (max-width: 768px) {
+    .info {
+        flex-direction: column;
+    }
+    .info__comment {
+        width: 100%;
+    }
+    .container {
+        margin-left: 0%;
+        width: 100%;
+    }
 }
